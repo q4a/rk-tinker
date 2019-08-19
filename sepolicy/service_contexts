@@ -1,2 +1,3 @@
 device         u:object_r:devicemanager_service:s0
 pppoe          u:object_r:pppoe_service:s0
+affinity       u:object_r:affinity_service:s0

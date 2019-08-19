@@ -21,6 +21,8 @@ allow system_server system_server:unix_stream_socket { ioctl };
 allow system_server pppoe_service:service_manager { add find };
 allow system_server pppoe_data_file:file { read open getattr };
 
+allow system_server affinity_service:service_manager { add find };
+
 # map with latest kernel security/selinux/include/classmap.h
 allow system_server system_server:netlink_netfilter_socket { create setopt bind write read getopt };
 allow system_server system_server:netlink_generic_socket { create setopt bind write read getopt getattr };
