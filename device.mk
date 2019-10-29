@@ -595,6 +595,43 @@ endif
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.first_api_level=23
 
+ifeq ($(strip $(BOARD_HAVE_DONGLE)),true)
+ifeq ($(strip $(TARGET_ARCH)), arm64)
+PRODUCT_PROPERTY_OVERRIDES += \
+    rild.libpath=/system/lib64/libril-rk29-dataonly.so
+else
+PRODUCT_PROPERTY_OVERRIDES += \
+    rild.libpath=/system/lib/libril-rk29-dataonly.so
+endif
+endif
+
+ifeq ($(strip $(BOARD_HAS_RK_4G_MODEM)),true)
+PRODUCT_PACKAGES += \
+    rild \
+    librk-ril \
+    dhcpcd
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.boot.noril=false \
+    ro.telephony.default_network=9
+
+ifeq ($(strip $(TARGET_ARCH)), arm64)
+PRODUCT_PROPERTY_OVERRIDES += \
+    rild.libpath=/system/lib64/librk-ril.so
+
+PRODUCT_COPY_FILES += \
+    device/rockchip/common/4g_modem/bin64/dhcpcd:system/bin/dhcpcd \
+    device/rockchip/common/4g_modem/lib64/librk-ril.so:system/lib64/librk-ril.so
+else
+PRODUCT_PROPERTY_OVERRIDES += \
+    rild.libpath=/system/lib/librk-ril.so
+
+PRODUCT_COPY_FILES += \
+    device/rockchip/common/4g_modem/bin32/dhcpcd:system/bin/dhcpcd \
+    device/rockchip/common/4g_modem/lib32/librk-ril.so:system/lib/librk-ril.so
+endif
+endif
+
 $(call inherit-product-if-exists, vendor/rockchip/common/device-vendor.mk)
 
 ########################################################

@@ -234,6 +234,9 @@ include device/rockchip/common/wifi_bt_common.mk
 #Camera flash
 BOARD_HAVE_FLASH ?= true
 
+#for rk 4g modem
+BOARD_HAS_RK_4G_MODEM ?= false
+
 #HDMI support
 BOARD_SUPPORT_HDMI ?= true
 

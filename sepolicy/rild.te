@@ -9,3 +9,6 @@ allow rild self:capability { setuid setgid dac_override };
 allow rild system_data_file:dir {write add_name};
 #allow rild system_data_file:file {create write};
 allow rild self:capability { sys_admin };
+allow rild proc_net:file write;
+allow rild self:capability net_bind_service;
+allow rild self:packet_socket { bind create read setopt write };
