@@ -159,3 +159,5 @@
 
 #for multi-ethernet interface
 /system/bin/lan_bridge_on.sh	u:object_r:lan_bridge_on_exec:s0
+
+/vendor/bin/camera_test   u:object_r:camera_test_exec:s0
