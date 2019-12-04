@@ -90,6 +90,7 @@
 # for Camera
 /dev/camsys_marvin        0664        media        camera
 /dev/camsys_marvin1       0664        media        camera
+/dev/rk_preisp            0664        media        camera
 
 #for ddr freq
 /dev/ddr_freq        0664        system        graphics
